@@ -362,17 +362,27 @@ function append_files_to_list(path, files) {
         });
       }
       var ext = p.split('.').pop().toLowerCase();
+      var is_general_file = true;
+      var pp = p, cc = c;
       if ("|html|php|css|go|java|js|json|txt|sh|md|mp4|webm|avi|bmp|jpg|jpeg|png|gif|m4a|mp3|flac|wav|ogg|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|pdf|".indexOf(`|${ext}|`) >= 0) {
         targetFiles.push(filepath);
         p += "?a=view";
         c += " view";
+	is_general_file = false;
       }
-      html += `<li class="mdui-list-item file mdui-ripple" target="_blank"><a gd-type="${item.mimeType}" href="${p}" class="${c}">
+      html += `<li class="mdui-list-item file mdui-ripple" target="_blank">
+                  <a gd-type="${item.mimeType}" href="${pp}" class="${cc}">
 	          <div class="mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate" title="${item.name}">
 	          <i class="mdui-icon material-icons">insert_drive_file</i>
 	            ${item.name}
-	          </div>
-	          <div class="mdui-col-sm-3 mdui-text-right">${item['modifiedTime']}</div>
+	          </div>`;
+       if (!is_general_file) {
+	   html += `<div class="mdui-col-sm-4 mdui-text-right>
+                      <i class="mdui-icon material-icons">remove_red_eye</i>
+                      <a gd-type="${item.mimeType}" href="${p}" class="${c}"></a>
+                    </div>`
+       }
+       html += `<div class="mdui-col-sm-3 mdui-text-right">${item['modifiedTime']}</div>
 	          <div class="mdui-col-sm-2 mdui-text-right">${item['size']}</div>
 	          </a>
 	      </li>`;
