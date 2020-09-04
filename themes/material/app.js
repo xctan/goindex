@@ -1,5 +1,5 @@
 // 在head 中 加载 必要静态
-document.write('<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">');
+document.write('<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mdui@1.0.0/dist/css/mdui.min.css">');
 // markdown支持
 document.write('<script src="//cdn.jsdelivr.net/npm/markdown-it@10.0.0/dist/markdown-it.min.js"></script>');
 document.write('<style>.mdui-appbar .mdui-toolbar{height:56px;font-size:1pc}.mdui-toolbar>*{padding:0 6px;margin:0 2px}.mdui-toolbar>i{opacity:.5}.mdui-toolbar>.mdui-typo-headline{padding:0 1pc 0 0}.mdui-toolbar>i{padding:0}.mdui-toolbar>a:hover,a.active,a.mdui-typo-headline{opacity:1}.mdui-container{max-width:980px}.mdui-list-item{transition:none}.mdui-list>.th{background-color:initial}.mdui-list-item>a{width:100%;line-height:3pc}.mdui-list-item{margin:2px 0;padding:0}.mdui-toolbar>a:last-child{opacity:1}@media screen and (max-width:980px){.mdui-list-item .mdui-text-right{display:none}.mdui-container{width:100%!important;margin:0}.mdui-toolbar>.mdui-typo-headline,.mdui-toolbar>a:last-child,.mdui-toolbar>i:first-child{display:block}}</style>');
@@ -372,17 +372,18 @@ function append_files_to_list(path, files) {
       }
       html += `<li class="mdui-list-item file mdui-ripple" target="_blank">
                   <a gd-type="${item.mimeType}" href="${pp}" class="${cc}">
-	          <div class="mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate" title="${item.name}">
-	          <i class="mdui-icon material-icons">insert_drive_file</i>
-	            ${item.name}
-	          </div>`;
-       if (!is_general_file) {
-	   html += `<div class="mdui-col-sm-4 mdui-text-right>
-                      <i class="mdui-icon material-icons">remove_red_eye</i>
-                      <a gd-type="${item.mimeType}" href="${p}" class="${c}"></a>
-                    </div>`
-       }
-       html += `<div class="mdui-col-sm-3 mdui-text-right">${item['modifiedTime']}</div>
+	            <div class="mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate" title="${item.name}">
+	              <i class="mdui-icon material-icons">insert_drive_file</i>
+	              ${item.name}
+	            </div>`;
+      if (!is_general_file) {
+	   html += `<a gd-type="${item.mimeType}" href="${p}" class="${c}">
+                      <div class="mdui-col-sm-4 mdui-text-right>
+                        <i class="mdui-icon material-icons">remove_red_eye</i>
+                      </div>
+                    </a>`;
+      }
+      html += `<div class="mdui-col-sm-3 mdui-text-right">${item['modifiedTime']}</div>
 	          <div class="mdui-col-sm-2 mdui-text-right">${item['size']}</div>
 	          </a>
 	      </li>`;
