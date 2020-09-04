@@ -378,12 +378,12 @@ function append_files_to_list(path, files) {
 	            </div>`;
       if (!is_general_file) {
 	   html += `<a gd-type="${item.mimeType}" href="${p}" class="${c}">
-                      <div class="mdui-col-sm-4 mdui-text-right>
+                      <div class="mdui-col-sm-4>
                         <i class="mdui-icon material-icons">remove_red_eye</i>
                       </div>
                     </a>`;
       }
-      html += `<div class="mdui-col-sm-3 mdui-text-right">${item['modifiedTime']}</div>
+      html += `   <div class="mdui-col-sm-3 mdui-text-right">${item['modifiedTime']}</div>
 	          <div class="mdui-col-sm-2 mdui-text-right">${item['size']}</div>
 	          </a>
 	      </li>`;
