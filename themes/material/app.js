@@ -378,7 +378,7 @@ function append_files_to_list(path, files) {
 	            </div>`;
       if (!is_general_file) {
 	   html += `<a gd-type="${item.mimeType}" href="${p}" class="${c}">
-                      <div class="mdui-col-sm-4>
+                      <div class="mdui-col-sm-4">
                         <i class="mdui-icon material-icons">remove_red_eye</i>
                       </div>
                     </a>`;
